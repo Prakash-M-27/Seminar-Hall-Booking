@@ -22,10 +22,18 @@ async function connectDB() {
 
 const app = express();
 
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(",").map((s) => s.trim())
+  : ["http://localhost:5173", "http://localhost:3000", "http://localhost:5000"];
+
 app.use(cors({
-  origin: process.env.VERCEL_URL
-    ? [`https://${process.env.VERCEL_URL}`, `https://hall-booking-*.vercel.app`]
-    : "*",
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
