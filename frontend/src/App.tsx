@@ -92,7 +92,7 @@ const App: React.FC = () => {
           <Route path="*" element={<Navigate to="/book" replace />} />
         </Routes>
         <footer className="text-center text-xs text-neutral-400 py-4 border-t border-neutral-100">
-          Developed by Prakash M, CSE Dept
+          © Developed by Prakash M, CSE Dept
         </footer>
       </AuthProvider>
     </BrowserRouter>
