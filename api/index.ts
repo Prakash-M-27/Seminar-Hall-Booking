@@ -2,11 +2,11 @@ import { VercelRequest, VercelResponse } from "@vercel/node";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import authRoutes from "../backend/src/routes/auth";
-import hallRoutes from "../backend/src/routes/halls";
-import bookingRoutes from "../backend/src/routes/bookings";
-import availabilityRoutes from "../backend/src/routes/availability";
-import userRoutes from "../backend/src/routes/users";
+import authRoutes from "./routes/auth";
+import hallRoutes from "./routes/halls";
+import bookingRoutes from "./routes/bookings";
+import availabilityRoutes from "./routes/availability";
+import userRoutes from "./routes/users";
 
 let isConnected = false;
 
